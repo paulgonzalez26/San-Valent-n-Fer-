@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Fer ❤️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            color: #d63384;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .container {
+            margin-top: 20vh;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        #yes {
+            background-color: #ff66b2;
+            color: white;
+        }
+        #no {
+            background-color: #ff3333;
+            color: white;
+            position: absolute;
+        }
+        .hidden {
+            display: none;
+        }
+        #final-message {
+            font-size: 20px;
+            margin-top: 50px;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 20px;
+            animation: float 1.5s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="question">
+        <h1>Hola Fer, no sabía que esto se preguntaba pero realmente quiero darte todo el amor que pueda y cada detalle para recordarte siempre que te amo ❤️</h1>
+        <h2>¿Te gustaría ser mi San Valentín?</h2>
+        <div class="buttons">
+            <button id="yes" onclick="showFinalMessage()">Sí mi amor, por supuesto, casémonos 💍</button>
+            <button id="no" onmouseover="moveNoButton()">No, te odio, no me hables 😠</button>
+        </div>
+    </div>
+
+    <div id="final" class="hidden">
+        <h2 id="final-message">Sé que no soy el mejor novio, ni el mejor amigo, ni el mejor compañero, pero tengo tantas ganas de aprender tanto de ti, de saber tantas cosas y que sepas cosas de mí. Gracias por siempre darme más razones para amarte. ❤️</h2>
+    </div>
+
+    <script>
+        function showFinalMessage() {
+            document.getElementById("question").classList.add("hidden");
+            document.getElementById("final").classList.remove("hidden");
+            generateHearts();
+        }
+
+        function moveNoButton() {
+            let noButton = document.getElementById("no");
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            noButton.style.left = x + "px";
+            noButton.style.top = y + "px";
+        }
+
+        function generateHearts() {
+            for (let i = 0; i < 30; i++) {
+                let heart = document.createElement("div");
+                heart.className = "heart";
+                heart.innerHTML = "❤️";
+                document.body.appendChild(heart);
+                let x = Math.random() * window.innerWidth;
+                let y = Math.random() * window.innerHeight;
+                heart.style.left = x + "px";
+                heart.style.top = y + "px";
+                setTimeout(() => heart.remove(), 4000);
+            }
+        }
+    </script>
+</body>
+</html>
